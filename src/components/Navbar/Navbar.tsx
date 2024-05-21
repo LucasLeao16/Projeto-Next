@@ -1,4 +1,5 @@
 import { cn } from "@/helpers/cn";
+import Image from "next/image";
 import {
   AwardIcon,
   GamepadIcon,
@@ -20,17 +21,19 @@ export const Navbar = ({ className, ...props }: NavbarProps) => {
       {...props}
     >
       <div className="flex items-center justify-center">
-        <img
+        <Image
           className="h-12 w-auto p-2 "
           src="https://emersonbroga.com/e/assets/emersonbroga-logo-name-pink.png"
           alt="logo"
+          width={112}
+          height={32}
         />
       </div>
 
       <NavbarList className={"flex-grow"}>
         <NavbarListItemLink href="/">
-          <HomeIcon className="h-4 w-4" />
-          Home
+          <HomeIcon className="h-4 w-4" color="white" />
+          home
         </NavbarListItemLink>
 
         <NavbarListItemLink href="/games">
