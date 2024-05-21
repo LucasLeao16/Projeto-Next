@@ -6,42 +6,9 @@ import {
   RouteIcon,
   SmileIcon,
 } from "../Icons/Icons";
-
-type NavbarProps = React.ComponentProps<"nav">;
-type NavbarListProps = React.ComponentProps<"ul">;
-type NavbarListItemProps = React.ComponentProps<"li">;
-
-const NavbarList = ({ children, className, ...props }: NavbarListProps) => {
-  return (
-    <ul
-      className={cn(
-        "my-4 border-t border-indigo-400/20 hover:border-indigo-400/40",
-        className,
-      )}
-      {...props}
-    >
-      {children}
-    </ul>
-  );
-};
-
-const NavbarListItem = ({
-  children,
-  className,
-  ...props
-}: NavbarListItemProps) => {
-  return (
-    <li
-      className={cn(
-        "my-2 flex cursor-pointer items-center gap-2 rounded bg-transparent p-2 hover:bg-indigo-400/40 hover:text-slate-100",
-        className,
-      )}
-      {...props}
-    >
-      {children}
-    </li>
-  );
-};
+import { NavbarList } from "./NavbarList";
+import { NavbarListItemLink } from "./NavbarListItemLink";
+import { NavbarProps } from "./types.d";
 
 export const Navbar = ({ className, ...props }: NavbarProps) => {
   return (
@@ -59,32 +26,33 @@ export const Navbar = ({ className, ...props }: NavbarProps) => {
           alt="logo"
         />
       </div>
+
       <NavbarList className={"flex-grow"}>
-        <NavbarListItem>
+        <NavbarListItemLink href="/">
           <HomeIcon className="h-4 w-4" />
           Home
-        </NavbarListItem>
+        </NavbarListItemLink>
 
-        <NavbarListItem>
+        <NavbarListItemLink href="/games">
           <GamepadIcon className="h-4 w-4" />
           Games
-        </NavbarListItem>
+        </NavbarListItemLink>
 
-        <NavbarListItem>
+        <NavbarListItemLink href={"/top10"}>
           <AwardIcon className="h-4 w-4" />
           Top 10
-        </NavbarListItem>
+        </NavbarListItemLink>
 
-        <NavbarListItem>
+        <NavbarListItemLink href="/walktrough">
           <RouteIcon className="h-4 w-4" />
-          Walktrought
-        </NavbarListItem>
+          Walktrough
+        </NavbarListItemLink>
       </NavbarList>
 
       <NavbarList>
-        <NavbarListItem>
+        <NavbarListItemLink href="/user">
           <SmileIcon className="h-4 w-4" /> User
-        </NavbarListItem>
+        </NavbarListItemLink>
       </NavbarList>
     </nav>
   );
