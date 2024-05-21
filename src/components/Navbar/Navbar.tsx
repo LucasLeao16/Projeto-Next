@@ -1,3 +1,4 @@
+import { cn } from "@/helpers/cn";
 import {
   AwardIcon,
   GamepadIcon,
@@ -6,29 +7,51 @@ import {
   SmileIcon,
 } from "../Icons/Icons";
 
-const NavbarList = ({ children, className }) => {
+type NavbarProps = React.ComponentProps<"nav">;
+type NavbarListProps = React.ComponentProps<"ul">;
+type NavbarListItemProps = React.ComponentProps<"li">;
+
+const NavbarList = ({ children, className, ...props }: NavbarListProps) => {
   return (
     <ul
-      className={`my-4 border-t border-indigo-400/20 hover:border-indigo-400/40 ${className}`}
+      className={cn(
+        "my-4 border-t border-indigo-400/20 hover:border-indigo-400/40",
+        className,
+      )}
+      {...props}
     >
       {children}
     </ul>
   );
 };
 
-const NavbarListItem = ({ children, className }) => {
+const NavbarListItem = ({
+  children,
+  className,
+  ...props
+}: NavbarListItemProps) => {
   return (
     <li
-      className={`my-2 flex cursor-pointer items-center gap-2 rounded bg-transparent p-2 hover:bg-indigo-400/40 hover:text-slate-100 ${className}`}
+      className={cn(
+        "my-2 flex cursor-pointer items-center gap-2 rounded bg-transparent p-2 hover:bg-indigo-400/40 hover:text-slate-100",
+        className,
+      )}
+      {...props}
     >
       {children}
     </li>
   );
 };
 
-export const Navbar = () => {
+export const Navbar = ({ className, ...props }: NavbarProps) => {
   return (
-    <nav className="flex h-screen w-72 flex-col border-r  border-indigo-400/20  bg-slate-900 p-2 text-slate-300 hover:border-indigo-400/40">
+    <nav
+      className={cn(
+        "flex h-screen w-72 flex-col border-r  border-indigo-400/20  bg-slate-900 p-2 text-slate-300 hover:border-indigo-400/40",
+        className,
+      )}
+      {...props}
+    >
       <div className="flex items-center justify-center">
         <img
           className="h-12 w-auto p-2 "
